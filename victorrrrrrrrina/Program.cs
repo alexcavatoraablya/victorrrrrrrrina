@@ -7,6 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
         Vistory v = new();
 
         v.LoadVictory();
@@ -17,6 +18,7 @@ class Program
 class Vistory
 {
     public Quiz? quiz = null;
+    public int score = 0;
 
     public void LoadVictory()
     {
@@ -69,12 +71,10 @@ class Vistory
             }
 
             if (question.answers[choice] == correct)
-                Console.WriteLine("Correct!");
-            else
-                Console.WriteLine("Wrong!");
-
-            Console.ReadKey();
+                ++score;
         }
+
+        Console.WriteLine($"Result: {score}/{quiz.questions.Length}");
     }
 }
 
